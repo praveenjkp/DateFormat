@@ -43,19 +43,7 @@ __version__ = get_version()
 _all_ = ['date_format']
 
 
-def date_format(input_date, format_date):
-    """
-    :param format_date:  Date which needs to be tested against
-                    the given format from the argument date
-    :param input_date:    Date or the format with any supported formats
-                    which is basically taken as baseline here to verify
-                    the date structure
 
-    Examples:
-    | ${date} =       | Date Format | ${input_date}   | ${format_date} |
-
-    """
-    return _verify_date_format_(input_date, format_date)
 
 
 def _verify_date_format_(input_date, input_format):
@@ -79,7 +67,18 @@ def _fail(formatdate, fail_template):
     raise AssertionError(formatdate + '  ' + fail_template)
 
 
-class Date(object):
+class DateTimeFormatJKP(object):
 
-    def __init__(self, input_date, input_format=None):
-        pass
+    def date_format(self, input_date, format_date):
+        """
+        :param format_date:  Date which needs to be tested against
+                        the given format from the argument date
+        :param input_date:    Date or the format with any supported formats
+                        which is basically taken as baseline here to verify
+                        the date structure
+
+        Examples:
+        | ${date} =       | Date Format | ${input_date}   | ${format_date} |
+
+        """
+        return _verify_date_format_(input_date, format_date)
